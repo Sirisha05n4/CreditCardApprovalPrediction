@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your credit card application result — AI-powered instant decision from NexBank.">
+    <title>Application Result — AI Banking Portal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="result-page">
+
+<!-- Animated Background Orbs -->
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- Main Wrapper -->
+<div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">NexBank</span>
+                <span class="brand-tagline">AI Credit Portal</span>
+            </div>
+        </div>
+        <div class="header-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Secured &amp; Encrypted</span>
+        </div>
+    </header>
+
+    <main class="main-content result-main">
+
+        <!-- Result Card -->
+        {% if "Approved" in result %}
+        <div class="result-card result-approved" id="resultCard">
+            <div class="result-burst" aria-hidden="true">
+                {% for i in range(12) %}
+                <div class="burst-ray"></div>
+                {% endfor %}
+            </div>
+            <div class="result-icon-wrap approved-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h1 class="result-heading approved-heading">Congratulations!</h1>
+            <p class="result-status">Your application has been</p>
+            <p class="result-verdict approved-verdict">APPROVED</p>
+            <p class="result-message">
+                Your credit card application has been successfully approved by our AI system.
+                You will receive your card within 5–7 business days.
+            </p>
+
+            <!-- Confidence Bar -->
+          <div class="confidence-section">
+    <div class="confidence-label">
+        <span><i class="fa-solid fa-chart-bar"></i> AI Confidence Score</span>
+        <span class="confidence-pct">{{ confidence }}%</span>
+    </div>
+
+    <div class="confidence-bar-bg">
+<div class="confidence-bar approved-bar"
+     data-width="{{ confidence }}">
+</div>
+    </div>
+
+    <p class="confidence-note">
+        <i class="fa-solid fa-circle-info"></i>
+        Confidence score is derived from the Random Forest model's probability output.
+    </p>
+</div>
+
+            <!-- Details Grid -->
+            <div class="result-details">
+                <div class="detail-chip">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Model: Random Forest</span>
+                </div>
+                <div class="detail-chip">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Real-time Decision</span>
+                </div>
+                <div class="detail-chip">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <span>Verified &amp; Secure</span>
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="result-card result-rejected" id="resultCard">
+            <div class="result-icon-wrap rejected-icon">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <h1 class="result-heading rejected-heading">Application Reviewed</h1>
+            <p class="result-status">Your application has been</p>
+            <p class="result-verdict rejected-verdict">DECLINED</p>
+            <p class="result-message">
+                Unfortunately, your credit card application did not meet our current approval criteria.
+                You may reapply after improving your credit profile.
+            </p>
+
+            <!-- Confidence Bar -->
+            <div class="confidence-section">
+    <div class="confidence-label">
+        <span><i class="fa-solid fa-chart-bar"></i> AI Confidence Score</span>
+        <span class="confidence-pct">{{ confidence }}%</span>
+    </div>
+
+    <div class="confidence-bar-bg">
+<div class="confidence-bar rejected-bar"
+     data-width="{{ confidence }}">
+</div>
+    </div>
+
+    <p class="confidence-note">
+        <i class="fa-solid fa-circle-info"></i>
+        Confidence score is derived from the Random Forest model's probability output.
+    </p>
+</div>
+            <!-- Tips -->
+            <div class="tips-section">
+                <h3 class="tips-title"><i class="fa-solid fa-lightbulb"></i> How to Improve Your Chances</h3>
+                <ul class="tips-list">
+                    <li><i class="fa-solid fa-check"></i> Maintain a stable employment history</li>
+                    <li><i class="fa-solid fa-check"></i> Increase your annual income</li>
+                    <li><i class="fa-solid fa-check"></i> Reduce existing debt obligations</li>
+                    <li><i class="fa-solid fa-check"></i> Build a positive credit record</li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="result-actions">
+            <a href="/" class="predict-again-btn" id="predictAgainBtn">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Predict Again</span>
+            </a>
+            <button class="share-btn" onclick="window.print()">
+                <i class="fa-solid fa-print"></i>
+                <span>Print Result</span>
+            </button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-bar">
+            <div class="trust-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI-Powered Decision</span>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Instant Results</span>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Bank-Grade Security</span>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>24/7 Available</span>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply for credit card approval using our AI-powered instant decision system. Secure, fast, and intelligent credit assessment.">
+    <title>Credit Card Approval — AI Banking Portal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Animated Background Orbs -->
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay" aria-hidden="true" role="status">
+    <div class="loading-card">
+        <div class="spinner-ring">
+            <div class="spinner-inner"></div>
+        </div>
+        <p class="loading-text">Analyzing your application…</p>
+        <p class="loading-sub">Our AI is evaluating your credit profile</p>
+        <div class="loading-dots">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</div>
+
+<!-- Main Wrapper -->
+<div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">NexBank</span>
+                <span class="brand-tagline">AI Credit Portal</span>
+            </div>
+        </div>
+        <div class="header-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Secured &amp; Encrypted</span>
+        </div>
+    </header>
+
+    <!-- Form Card -->
+    <main class="main-content">
+        <div class="form-card" id="formCard">
+
+            <!-- Card Header -->
+            <div class="card-header">
+                <div class="card-icon-wrap">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </div>
+                <h1 class="card-title">Credit Card Approval</h1>
+                <p class="card-subtitle">Complete the form below for an instant AI-powered decision on your application.</p>
+                <div class="step-indicator">
+                    <span class="step-dot active"></span>
+                    <span class="step-dot"></span>
+                    <span class="step-dot"></span>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form action="/predict" method="POST" id="predictionForm" novalidate>
+
+                <!-- Section: Personal Information -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fa-solid fa-user-circle"></i>
+                        <h2 class="section-title">Personal Information</h2>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field-group">
+                            <label class="field-label" for="ID">
+                                <i class="fa-solid fa-id-badge"></i> Applicant ID
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="ID"
+                                    name="ID"
+                                    class="field-input"
+                                    placeholder="e.g. 5008804"
+                                    required
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="CODE_GENDER">
+                                <i class="fa-solid fa-venus-mars"></i> Gender
+                            </label>
+                            <div class="select-wrap">
+                                <select id="CODE_GENDER" name="CODE_GENDER" class="field-select">
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="CNT_CHILDREN">
+                                <i class="fa-solid fa-children"></i> Number of Children
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="CNT_CHILDREN"
+                                    name="CNT_CHILDREN"
+                                    class="field-input"
+                                    placeholder="0"
+                                    required
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="NAME_FAMILY_STATUS">
+                                <i class="fa-solid fa-heart"></i> Family Status
+                            </label>
+                            <div class="select-wrap">
+                                <select id="NAME_FAMILY_STATUS" name="NAME_FAMILY_STATUS" class="field-select">
+                                    <option value="0">Civil Marriage</option>
+                                    <option value="1">Married</option>
+                                    <option value="2">Separated</option>
+                                    <option value="3">Single / Not Married</option>
+                                    <option value="4">Widow</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="CNT_FAM_MEMBERS">
+                                <i class="fa-solid fa-people-group"></i> Family Members
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="CNT_FAM_MEMBERS"
+                                    name="CNT_FAM_MEMBERS"
+                                    class="field-input"
+                                    placeholder="e.g. 2"
+                                    step="0.1"
+                                    required
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="DAYS_BIRTH">
+                                <i class="fa-solid fa-cake-candles"></i> Days Since Birth
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="DAYS_BIRTH"
+                                    name="DAYS_BIRTH"
+                                    class="field-input"
+                                    placeholder="e.g. -12000"
+                                    required
+                                >
+                                <span class="input-hint">Enter as negative value (e.g. -12000)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section: Financial Profile -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h2 class="section-title">Financial Profile</h2>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field-group">
+                            <label class="field-label" for="AMT_INCOME_TOTAL">
+                                <i class="fa-solid fa-dollar-sign"></i> Annual Income
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="AMT_INCOME_TOTAL"
+                                    name="AMT_INCOME_TOTAL"
+                                    class="field-input"
+                                    placeholder="e.g. 270000"
+                                    required
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="NAME_INCOME_TYPE">
+                                <i class="fa-solid fa-briefcase"></i> Income Type
+                            </label>
+                            <div class="select-wrap">
+                                <select id="NAME_INCOME_TYPE" name="NAME_INCOME_TYPE" class="field-select">
+                                    <option value="0">Commercial Associate</option>
+                                    <option value="1">Pensioner</option>
+                                    <option value="2">State Servant</option>
+                                    <option value="3">Student</option>
+                                    <option value="4">Working</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="NAME_EDUCATION_TYPE">
+                                <i class="fa-solid fa-graduation-cap"></i> Education Level
+                            </label>
+                            <div class="select-wrap">
+                                <select id="NAME_EDUCATION_TYPE" name="NAME_EDUCATION_TYPE" class="field-select">
+                                    <option value="0">Academic Degree</option>
+                                    <option value="1">Higher Education</option>
+                                    <option value="2">Incomplete Higher</option>
+                                    <option value="3">Lower Secondary</option>
+                                    <option value="4">Secondary / Secondary Special</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="OCCUPATION_TYPE">
+                                <i class="fa-solid fa-hard-hat"></i> Occupation Type
+                            </label>
+                            <div class="select-wrap">
+                                <select id="OCCUPATION_TYPE" name="OCCUPATION_TYPE" class="field-select">
+                                    <option value="0">Accountants</option>
+                                    <option value="1">Cleaning Staff</option>
+                                    <option value="2">Cooking Staff</option>
+                                    <option value="3">Core Staff</option>
+                                    <option value="4">Drivers</option>
+                                    <option value="5">HR Staff</option>
+                                    <option value="6">High Skill Tech Staff</option>
+                                    <option value="7">IT Staff</option>
+                                    <option value="8">Laborers</option>
+                                    <option value="9">Low-skill Laborers</option>
+                                    <option value="10">Managers</option>
+                                    <option value="11">Medicine Staff</option>
+                                    <option value="12">Private Service Staff</option>
+                                    <option value="13">Realty Agents</option>
+                                    <option value="14">Sales Staff</option>
+                                    <option value="15">Secretaries</option>
+                                    <option value="16">Security Staff</option>
+                                    <option value="17">Waiters/barmen Staff</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="DAYS_EMPLOYED">
+                                <i class="fa-solid fa-calendar-check"></i> Days Employed
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="DAYS_EMPLOYED"
+                                    name="DAYS_EMPLOYED"
+                                    class="field-input"
+                                    placeholder="e.g. -3000"
+                                    required
+                                >
+                                <span class="input-hint">Enter as negative value (e.g. -3000)</span>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="MONTHS_BALANCE">
+                                <i class="fa-solid fa-calendar-days"></i> Months Balance
+                            </label>
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    id="MONTHS_BALANCE"
+                                    name="MONTHS_BALANCE"
+                                    class="field-input"
+                                    placeholder="e.g. -24"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section: Assets & Housing -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fa-solid fa-house-chimney"></i>
+                        <h2 class="section-title">Assets &amp; Housing</h2>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field-group">
+                            <label class="field-label" for="FLAG_OWN_CAR">
+                                <i class="fa-solid fa-car"></i> Owns a Car?
+                            </label>
+                            <div class="select-wrap">
+                                <select id="FLAG_OWN_CAR" name="FLAG_OWN_CAR" class="field-select">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="FLAG_OWN_REALTY">
+                                <i class="fa-solid fa-building"></i> Owns Property?
+                            </label>
+                            <div class="select-wrap">
+                                <select id="FLAG_OWN_REALTY" name="FLAG_OWN_REALTY" class="field-select">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group full-span">
+                            <label class="field-label" for="NAME_HOUSING_TYPE">
+                                <i class="fa-solid fa-map-location-dot"></i> Housing Type
+                            </label>
+                            <div class="select-wrap">
+                                <select id="NAME_HOUSING_TYPE" name="NAME_HOUSING_TYPE" class="field-select">
+                                    <option value="0">Co-op Apartment</option>
+                                    <option value="1">House / Apartment</option>
+                                    <option value="2">Municipal Apartment</option>
+                                    <option value="3">Office Apartment</option>
+                                    <option value="4">Rented Apartment</option>
+                                    <option value="5">With Parents</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section: Contact & Communication -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fa-solid fa-address-book"></i>
+                        <h2 class="section-title">Contact &amp; Communication</h2>
+                    </div>
+
+                    <div class="form-grid four-cols">
+
+                        <div class="field-group">
+                            <label class="field-label" for="FLAG_MOBIL">
+                                <i class="fa-solid fa-mobile-screen"></i> Mobile Phone
+                            </label>
+                            <div class="select-wrap">
+                                <select id="FLAG_MOBIL" name="FLAG_MOBIL" class="field-select">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="FLAG_WORK_PHONE">
+                                <i class="fa-solid fa-phone-office"></i> Work Phone
+                            </label>
+                            <div class="select-wrap">
+                                <select id="FLAG_WORK_PHONE" name="FLAG_WORK_PHONE" class="field-select">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="FLAG_PHONE">
+                                <i class="fa-solid fa-phone"></i> Home Phone
+                            </label>
+                            <div class="select-wrap">
+                                <select id="FLAG_PHONE" name="FLAG_PHONE" class="field-select">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label" for="FLAG_EMAIL">
+                                <i class="fa-solid fa-envelope"></i> Email Address
+                            </label>
+                            <div class="select-wrap">
+                                <select id="FLAG_EMAIL" name="FLAG_EMAIL" class="field-select">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="submit-section">
+                    <button type="submit" class="predict-btn" id="predictBtn">
+                        <span class="btn-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                        <span class="btn-text">Predict Approval</span>
+                        <span class="btn-shimmer"></span>
+                    </button>
+                    <p class="submit-note">
+                        <i class="fa-solid fa-lock"></i>
+                        Your data is processed securely and never stored.
+                    </p>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-bar">
+            <div class="trust-item">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI-Powered Decision</span>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Instant Results</span>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Bank-Grade Security</span>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>24/7 Available</span>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<!-- Script -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
