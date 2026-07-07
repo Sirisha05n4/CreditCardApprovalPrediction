@@ -1,35 +1,34 @@
-# 💳 Credit Card Approval Prediction using Machine Learning
+💳 Credit Card Approval Prediction using Machine Learning
 
-## 📌 Project Overview
+Predicts whether a customer is eligible for a credit card using a Random Forest machine learning model, served through a modern Flask web app.
+
+📌 Project Overview
 
 This project predicts whether a customer is eligible for a credit card using a Random Forest Machine Learning model.
 
-The application is developed using:
+Built with:
 
-- Python
-- Flask
-- HTML
-- CSS
-- JavaScript
-- Scikit-Learn
-- Pandas
 
----
+Python
+Flask
+HTML / CSS / JavaScript
+Scikit-Learn
+Pandas
 
-## Features
 
-- Modern Banking UI
-- Glassmorphism Design
-- AI-based Prediction
-- Confidence Score
-- Approved / Rejected Result Page
-- Responsive Design
+✨ Features
 
----
 
-## Project Structure
+Modern banking-style UI
+Glassmorphism design
+AI-based prediction (Random Forest)
+Confidence score with each prediction
+Approved / Rejected result page
+Fully responsive design
 
-```
+
+🗂️ Project Structure
+
 CreditCardApprovalPrediction
 │
 ├── app.py
@@ -38,74 +37,68 @@ CreditCardApprovalPrediction
 ├── static
 ├── templates
 └── dataset
-```
 
----
+🚀 Installation
 
-## Installation
+Step 1 — Clone or download the project
 
-### Step 1
+bashgit clone <YOUR_GITHUB_REPO_LINK>
+cd CreditCardApprovalPrediction
 
-Clone or Download the Project
+Step 2 — Create a virtual environment
 
-### Step 2
+bashpython -m venv venv
 
-Create Virtual Environment
+Step 3 — Activate the virtual environment (Windows)
 
-```bash
-python -m venv venv
-```
+bashvenv\Scripts\activate
 
-### Step 3
+Step 4 — Install required libraries
 
-Activate Virtual Environment
+bashpip install -r requirements.txt
 
-Windows
+Step 5 — Run Flask
 
-```bash
-venv\Scripts\activate
-```
+bashpython app.py
 
-### Step 4
+Step 6 — Open in browser
 
-Install Required Libraries
-
-```bash
-pip install -r requirements.txt
-```
-
-### Step 5
-
-Run Flask
-
-```bash
-python app.py
-```
-
-### Step 6
-
-Open Browser
-
-```
 http://127.0.0.1:5000
-```
 
----
+🛠️ Technologies Used
 
-## Technologies Used
 
-- Python
-- Flask
-- Random Forest
-- HTML
-- CSS
-- JavaScript
-- Pandas
-- NumPy
-- Scikit-Learn
+Python
+Flask
+Random Forest (Scikit-Learn)
+HTML / CSS / JavaScript
+Pandas
+NumPy
 
----
 
-## Author
+📊 Dataset
 
-Durgaprasad Kothapalli
+Credit Card Approval Prediction dataset (rikdifos) on Kaggle — uses application_record.csv (applicant personal info) and credit_record.csv (credit history), joined on ID.
+
+📈 Model Performance
+
+[Add your accuracy/precision/recall here — check the last cell of your training notebook for the accuracy_score output]
+
+🎥 Demo Video
+
+[Add demo video link here once recorded]
+
+👥 Team
+
+
+Team Lead: Sirisha Madhu Varshini Murugu
+Members: Amith Sivakoti, Thiragati Hruday Raj, Sundarapu Lavanya Suryasri Devika, Durgaprasad Kothapalli
+
+
+🔗 Repository
+
+https://github.com/Sirisha05n4/CreditCardApprovalPrediction
+
+📄 Documentation
+
+Full project documentation (milestones, architecture, scenarios) is in Project_Documentation.docx in this repo.
