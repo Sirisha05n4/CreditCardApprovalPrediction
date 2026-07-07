@@ -77,7 +77,9 @@ http://127.0.0.1:5000
 [Credit Card Approval Prediction dataset (rikdifos) on Kaggle](https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction) — uses `application_record.csv` (applicant personal info) and `credit_record.csv` (credit history), joined on `ID`.
 
 ## 📈 Model Performance
-_[Add your accuracy/precision/recall here — check the last cell of your training notebook for the accuracy_score output]_
+- **Overall Accuracy:** 99%
+- **Precision/Recall/F1 (weighted avg):** 0.97 / 0.99 / 0.98
+- **Note:** The dataset has a class imbalance (approved ≈98.5%, rejected ≈1.5%), which affects minority-class prediction. See `6. Project Testing/README.md` for full breakdown and planned improvements.
 
 ## 🎥 Demo Video
 _[Add demo video link here once recorded]_
