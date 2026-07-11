@@ -36,7 +36,7 @@ CreditCardApprovalPrediction
 
 **Step 1 — Clone or download the project**
 ```bash
-git clone <YOUR_GITHUB_REPO_LINK>
+git clone https://github.com/Sirisha05n4/CreditCardApprovalPrediction
 cd CreditCardApprovalPrediction
 ```
 
@@ -74,7 +74,12 @@ http://127.0.0.1:5000
 - NumPy
 
 ## 📊 Dataset
-[Credit Card Approval Prediction dataset (rikdifos) on Kaggle](https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction) — uses `application_record.csv` (applicant personal info) and `credit_record.csv` (credit history), joined on `ID`.
+Credit Card Approval Prediction dataset (rikdifos) on Kaggle
+Dataset Link:
+https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction
+Files Used:
+• application_record.csv
+• credit_record.csv
 
 ## 📈 Model Performance
 - **Overall Accuracy:** 99%
