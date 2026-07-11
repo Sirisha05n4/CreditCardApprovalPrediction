@@ -82,7 +82,7 @@ http://127.0.0.1:5000
 - **Note:** The dataset has a class imbalance (approved ≈98.5%, rejected ≈1.5%), which affects minority-class prediction. See `6. Project Testing/README.md` for full breakdown and planned improvements.
 
 ## 🎥 Demo Video
-_[Add demo video link here once recorded]_
+https://drive.google.com/file/d/1yHT0nok-JWRGWzSRPSKd0OVRkspMMT8t/view?usp=sharing
 
 ## 👥 Team
 - Team Lead: Sirisha Madhu Varshini Murugu
