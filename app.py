@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 # Load Model
 model = joblib.load("models/credit_card_model.pkl")
-le = joblib.load("models/label_encoder.pkl")
 
 
 @app.route("/")
@@ -21,7 +20,6 @@ def predict():
     # Get Form Data
     # ===========================
 
-    ID = int(request.form["ID"])
     CODE_GENDER = int(request.form["CODE_GENDER"])
     FLAG_OWN_CAR = int(request.form["FLAG_OWN_CAR"])
     FLAG_OWN_REALTY = int(request.form["FLAG_OWN_REALTY"])
@@ -46,7 +44,6 @@ def predict():
     # ===========================
 
     data = [[
-        ID,
         CODE_GENDER,
         FLAG_OWN_CAR,
         FLAG_OWN_REALTY,
@@ -72,7 +69,6 @@ def predict():
     # ===========================
 
     columns = [
-        "ID",
         "CODE_GENDER",
         "FLAG_OWN_CAR",
         "FLAG_OWN_REALTY",
